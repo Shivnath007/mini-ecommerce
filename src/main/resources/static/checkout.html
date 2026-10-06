@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Checkout | MiniShop</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body class="store-page">
+
+
+    <header class="store-header">
+
+        <a
+            href="index.html"
+            class="store-logo"
+        >
+
+            <div class="store-logo-icon">
+                🛍️
+            </div>
+
+            <div>
+
+                <strong>
+                    MiniShop
+                </strong>
+
+                <span>
+                    Secure checkout
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <a
+            href="cart.html"
+            class="store-back-btn"
+        >
+            ← Back to Cart
+        </a>
+
+    </header>
+
+
+
+    <main class="checkout-main">
+
+
+        <div class="checkout-heading">
+
+            <span>
+                CHECKOUT
+            </span>
+
+            <h1>
+                Complete Your Order
+            </h1>
+
+            <p>
+                Enter your delivery information below.
+            </p>
+
+        </div>
+
+
+
+        <div class="checkout-layout-v2">
+
+
+            <!-- =========================
+                 FORM
+            ========================== -->
+
+            <section class="checkout-form-card">
+
+                <div class="checkout-card-header">
+
+                    <div class="checkout-step-icon">
+                        1
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Delivery Information
+                        </h2>
+
+                        <p>
+                            Where should we deliver your order?
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form id="checkout-form">
+
+
+                    <div class="checkout-field-grid">
+
+
+                        <div class="checkout-field">
+
+                            <label for="name">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Enter your full name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="checkout-field">
+
+                            <label for="email">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="you@example.com"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="checkout-field full-checkout-field">
+
+                            <label for="address">
+                                Delivery Address
+                            </label>
+
+                            <textarea
+                                id="address"
+                                placeholder="House number, street, area..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="checkout-field">
+
+                            <label for="city">
+                                City
+                            </label>
+
+                            <input
+                                type="text"
+                                id="city"
+                                placeholder="Enter your city"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="checkout-field">
+
+                            <label for="pincode">
+                                PIN Code
+                            </label>
+
+                            <input
+                                type="text"
+                                id="pincode"
+                                placeholder="e.g. 226001"
+                                pattern="[0-9]{6}"
+                                maxlength="6"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="secure-checkout-note">
+
+                        🔒
+
+                        <span>
+                            Your information is securely
+                            processed and used only for
+                            order delivery.
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="place-order-btn"
+                    >
+
+                        Place Order
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+                </form>
+
+            </section>
+
+
+
+            <!-- =========================
+                 SUMMARY
+            ========================== -->
+
+            <aside class="checkout-summary-card">
+
+                <div class="checkout-card-header">
+
+                    <div class="checkout-step-icon">
+                        2
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Order Summary
+                        </h2>
+
+                        <p>
+                            Review your order
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="checkout-items"
+                    class="checkout-items-v2"
+                ></div>
+
+
+                <div class="checkout-summary-divider"></div>
+
+
+                <div
+                    id="checkout-total"
+                    class="checkout-final-total"
+                >
+                    Total: ₹0
+                </div>
+
+            </aside>
+
+
+        </div>
+
+    </main>
+
+
+
+    <footer class="store-footer">
+
+        <div>
+
+            <strong>
+                🛍️ MiniShop
+            </strong>
+
+            <p>
+                Shop smart. Shop simple.
+            </p>
+
+        </div>
+
+        <span>
+            Secure Checkout
+        </span>
+
+    </footer>
+
+
+
+    <script src="checkout.js"></script>
+
+</body>
+
+</html>

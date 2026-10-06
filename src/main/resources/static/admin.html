@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body class="admin-page">
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="admin-header">
+
+        <div class="admin-brand">
+
+            <div class="admin-brand-icon">
+                🛍️
+            </div>
+
+            <div>
+
+                <h1>Admin Panel</h1>
+
+                <p>
+                    Manage your store
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <a
+            href="index.html"
+            class="admin-store-btn"
+        >
+            ← Store
+        </a>
+
+    </header>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="admin-dashboard">
+
+
+        <!-- PAGE TITLE -->
+
+        <section class="admin-page-title">
+
+            <div>
+
+                <span class="admin-eyebrow">
+                    STORE MANAGEMENT
+                </span>
+
+                <h2>
+                    Product Management
+                </h2>
+
+                <p>
+                    Add, update and manage your products
+                </p>
+
+            </div>
+
+
+            <button
+                id="add-product-btn"
+                class="primary-admin-btn"
+                type="button"
+            >
+
+                <span>+</span>
+
+                Add Product
+
+            </button>
+
+        </section>
+
+
+
+        <!-- =========================
+             STATISTICS
+        ========================== -->
+
+        <section class="admin-stat-grid">
+
+
+            <div class="admin-stat-card total-card">
+
+                <div class="stat-icon">
+                    📦
+                </div>
+
+                <div class="stat-content">
+
+                    <span>
+                        Total Products
+                    </span>
+
+                    <strong id="total-products">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-stat-card stock-card">
+
+                <div class="stat-icon">
+                    🟢
+                </div>
+
+                <div class="stat-content">
+
+                    <span>
+                        In Stock
+                    </span>
+
+                    <strong id="in-stock">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-stat-card low-card">
+
+                <div class="stat-icon">
+                    🟠
+                </div>
+
+                <div class="stat-content">
+
+                    <span>
+                        Low Stock
+                    </span>
+
+                    <strong id="low-stock">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-stat-card out-card">
+
+                <div class="stat-icon">
+                    🔴
+                </div>
+
+                <div class="stat-content">
+
+                    <span>
+                        Out of Stock
+                    </span>
+
+                    <strong id="out-of-stock">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             TOOLBAR
+        ========================== -->
+
+        <section class="admin-toolbar-v3">
+
+
+            <div class="admin-search-box">
+
+                <span>
+                    🔍
+                </span>
+
+                <input
+                    type="text"
+                    id="search-product"
+                    placeholder="Search products..."
+                >
+
+            </div>
+
+
+            <div class="admin-filter">
+
+                <label for="stock-filter">
+                    Filter
+                </label>
+
+                <select id="stock-filter">
+
+                    <option value="all">
+                        All Products
+                    </option>
+
+                    <option value="in-stock">
+                        In Stock
+                    </option>
+
+                    <option value="low-stock">
+                        Low Stock
+                    </option>
+
+                    <option value="out-stock">
+                        Out of Stock
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             PRODUCTS SECTION
+        ========================== -->
+
+        <section class="admin-products-card">
+
+
+            <div class="products-card-header">
+
+                <div>
+
+                    <h3>
+                        All Products
+                    </h3>
+
+                    <p id="product-result-text">
+                        Loading products...
+                    </p>
+
+                </div>
+
+
+                <div class="products-count-badge">
+
+                    <span id="visible-count">
+                        0
+                    </span>
+
+                    products
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PRODUCTS -->
+
+            <div id="admin-product-container">
+
+                <div class="admin-loading-v3">
+
+                    <div class="loading-spinner"></div>
+
+                    <p>
+                        Loading products...
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         ADD / EDIT MODAL
+    ========================== -->
+
+    <div
+        id="product-modal"
+        class="admin-modal"
+        hidden
+    >
+
+        <div class="modal-overlay"></div>
+
+
+        <div class="modal-box">
+
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="modal-icon">
+                        📦
+                    </span>
+
+                    <div>
+
+                        <h3 id="form-title">
+                            Add Product
+                        </h3>
+
+                        <p>
+                            Enter product information
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="close-modal-btn"
+                    class="modal-close"
+                    type="button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <form id="product-form">
+
+
+                <input
+                    type="hidden"
+                    id="product-id"
+                >
+
+
+                <div class="modal-form-grid">
+
+
+                    <div class="modal-field">
+
+                        <label for="product-name">
+                            Product Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="product-name"
+                            placeholder="e.g. Running Shoes"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <div class="modal-field">
+
+                        <label for="product-price">
+                            Price
+                        </label>
+
+                        <div class="input-with-symbol">
+
+                            <span>₹</span>
+
+                            <input
+                                type="number"
+                                id="product-price"
+                                placeholder="1499"
+                                min="0.01"
+                                step="0.01"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="modal-field full-field">
+
+                        <label for="product-description">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="product-description"
+                            placeholder="Enter product description"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <div class="modal-field">
+
+                        <label for="product-quantity">
+                            Quantity
+                        </label>
+
+                        <input
+                            type="number"
+                            id="product-quantity"
+                            placeholder="20"
+                            min="0"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        id="cancel-form-btn"
+                        class="modal-cancel-btn"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="modal-save-btn"
+                    >
+
+                        <span>
+                            ✓
+                        </span>
+
+                        Save Product
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         TOAST
+    ========================== -->
+
+    <div
+        id="admin-toast"
+        class="admin-toast"
+    >
+
+        <span id="toast-icon">
+            ✓
+        </span>
+
+        <span id="toast-message">
+            Success
+        </span>
+
+    </div>
+
+
+
+    <script src="admin.js"></script>
+
+</body>
+
+</html>
