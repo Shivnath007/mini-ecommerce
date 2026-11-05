@@ -1,7 +1,6 @@
 package com.ecommerce.mini_ecommerce.dto;
 
 import com.ecommerce.mini_ecommerce.model.Order;
-import com.ecommerce.mini_ecommerce.model.OrderItem;
 import com.ecommerce.mini_ecommerce.model.OrderStatus;
 
 import java.math.BigDecimal;
