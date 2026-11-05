@@ -1,0 +1,18 @@
+$kind: http-request
+name: http://localhost:10000/auth/login
+description: ""
+url: http://localhost:10000/auth/csrf
+method: GET
+headers:
+  Content-Type: application/json
+  X-XSRF-TOKEN: 323509fb-381f-4ebb-bfb2-8d8c8c76005a
+body:
+  type: json
+  content: "{\r
+
+    \    \"username\": \"admin\",\r
+
+    \    \"password\": \"ChangeThisPassword123!\"\r
+
+    }"
+order: 1000

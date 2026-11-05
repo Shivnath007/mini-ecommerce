@@ -1,10 +1,14 @@
 package com.ecommerce.mini_ecommerce.controller;
 
+import com.ecommerce.mini_ecommerce.dto.CheckoutRequest;
+import com.ecommerce.mini_ecommerce.dto.OrderResponse;
 import com.ecommerce.mini_ecommerce.model.Order;
 import com.ecommerce.mini_ecommerce.service.OrderService;
-import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import jakarta.validation.Valid;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/orders")
@@ -17,17 +21,12 @@ public class OrderController {
     }
 
     @PostMapping
-    public Order placeOrder(@RequestBody Order order) {
-        return orderService.placeOrder(order);
-    }
+    @ResponseStatus(HttpStatus.CREATED)
+    public OrderResponse placeOrder(
+            @Valid @RequestBody CheckoutRequest request) {
 
-    @GetMapping
-    public List<Order> getAllOrders() {
-        return orderService.getAllOrders();
-    }
+        Order order = orderService.placeOrder(request);
 
-    @GetMapping("/{id}")
-    public Order getOrderById(@PathVariable Long id) {
-        return orderService.getOrderById(id);
+        return OrderResponse.from(order);
     }
 }
